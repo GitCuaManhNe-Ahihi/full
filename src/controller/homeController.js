@@ -1,8 +1,9 @@
 import express from "express";
-
-let homeControl  = (req,res) => {
-    
-    return res.render('home.ejs')
+import db from '../models/index'
+let homeControl  = async(req,res) => {
+   
+    let data = await db.User.findAll();
+    return res.render('home.ejs',{data:data})
 
 }
 
